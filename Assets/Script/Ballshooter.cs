@@ -4,61 +4,42 @@ using UnityEngine;
 
 public class Ballshooter : MonoBehaviour
 {
-    public GameObject ballPrefab; // ボールのプレハブ
-    public Transform shootPoint; // ボールを発射する位置
-    public float shootForce = 500f; // ボールに加える力
+    public GameObject ballPrefab;
+    public Transform shootPoint;
+    public float shootForce = 1000f;
+    public float cooldownTime = 1f;     // ← クールタイムの長さ（秒）
+    private float lastShootTime = -Mathf.Infinity; // 最後に撃った時刻（初期値：無限前）
     // Start is called before the first frame update
     void Start()
     {
-        
+      
     }
 
+    public void TryShoot()
+    {
+        if (Time.time - lastShootTime >= cooldownTime)
+        {
+            ShootBall();
+            lastShootTime = Time.time;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ShootBall();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space) && Time.time - lastShootTime >= cooldownTime)
+        //{
+        //    ShootBall();
+        //    lastShootTime = Time.time; // 最後に撃った時刻を更新
+        //}
     }
 
     void ShootBall()
     {
-        // ボールを生成
-        GameObject ball = Instantiate(ballPrefab, shootPoint.position, Quaternion.identity);
-        // ボールに力を加える
+        //球を発射位置に生成 
+        GameObject ball = Instantiate(ballPrefab, shootPoint.position, shootPoint.rotation);
+        // Rigidbodyコンポーネントを取得して力を加える
         Rigidbody rb = ball.GetComponent<Rigidbody>();
+        rb.useGravity = false; // 落としたくないならONにしない
         rb.AddForce(shootPoint.forward * shootForce);
-        
-    }
-}
-
-public class AutoDestroyByDistance : MonoBehaviour
-{
-    // 消えるまでの最大距離（インスペクターで設定可能）
-    public float maxDistance = 1f;
-
-    // 球が発射された時の位置を保存する変数
-    private Vector3 startPos;
-
-    // 最初に1回だけ実行される関数（初期化処理）
-    void Start()
-    {
-        // 球が出現した位置を記録
-        startPos = transform.position;
-    }
-
-    // 毎フレーム呼ばれる関数（距離をチェックする）
-    void Update()
-    {
-        // 現在位置と最初の位置との距離を計算
-        float distance = Vector3.Distance(startPos, transform.position);
-
-        // その距離が最大距離を超えたら、球を消す
-        if (distance > maxDistance)
-        {
-            // このGameObject（＝球）を削除する
-            Destroy(gameObject);
-        }
     }
 }
