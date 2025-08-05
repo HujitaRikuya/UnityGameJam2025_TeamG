@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public GameObject ballPrefab;
         public float shootForce = 500f;
     public Transform shootPoint; // 発射位置（プレイヤーの前など）
+    public int killCount = 0;  // 倒した数
     // Start is called before the first frame update    
     void Start()
     {
