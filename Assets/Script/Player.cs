@@ -5,12 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float MoveSpeed = 0.01f;
-    public float MaxYDistance = 10f; // ’†S‚©‚çˆÚ“®‚Å‚«‚éÅ‘å‹——£
+    public float MaxYDistance = 10f; // ä¸­å¿ƒã‹ã‚‰ç§»å‹•ã§ãã‚‹æœ€å¤§è·é›¢
     public float MaxZDistance = 10f;
-    public Vector3 CenterPoint = Vector3.zero; // ’†SÀ•W
+    public Vector3 CenterPoint = Vector3.zero; // ä¸­å¿ƒåº§æ¨™
     public GameObject ballPrefab;
         public float shootForce = 500f;
-    public Transform shootPoint; // ”­ËˆÊ’uiƒvƒŒƒCƒ„[‚Ì‘O‚È‚Çj
+    public Transform shootPoint; // ç™ºå°„ä½ç½®ï¼ˆãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å‰ãªã©ï¼‰
+    public int killCount = 0;  // å€’ã—ãŸæ•°
     // Start is called before the first frame update    
     void Start()
     {
@@ -20,11 +21,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ˆÚ“®‘¬“x‚ğ‰Šú‰»
+        // ç§»å‹•é€Ÿåº¦ã‚’åˆæœŸåŒ–
         Vector3 move = Vector3.zero;
 
 
-        // ‘OŒãˆÚ“®
+        // å‰å¾Œç§»å‹•
         if (Input.GetKey(KeyCode.W))
         {
             move.y += MoveSpeed;
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
         {
             move.y += -MoveSpeed;
         }
-        // ¶‰EˆÚ“®
+        // å·¦å³ç§»å‹•
         if (Input.GetKey(KeyCode.D))
         {
             move.z += MoveSpeed;
@@ -44,14 +45,14 @@ public class Player : MonoBehaviour
         }
 
 
-        // ˆÚ“®Œã‚ÌÀ•W‚ÌŒvZ
+        // ç§»å‹•å¾Œã®åº§æ¨™ã®è¨ˆç®—
         Vector3 nextPos = transform.position + move;
 
-        // ’†S“_‚©‚ç‚ÌŠe²‚²‚Æ‚Ì‹——£‚ğŠm”F
+        // ä¸­å¿ƒç‚¹ã‹ã‚‰ã®å„è»¸ã”ã¨ã®è·é›¢ã‚’ç¢ºèª
         float yDistance = Mathf.Abs(nextPos.y - CenterPoint.y);
         float zDistance = Mathf.Abs(nextPos.z - CenterPoint.z);
 
-        // ‚»‚ê‚¼‚ê‚Ì²‚ª‹–—e”ÍˆÍ“à‚©‚ğ”»’è
+        // ãã‚Œãã‚Œã®è»¸ãŒè¨±å®¹ç¯„å›²å†…ã‹ã‚’åˆ¤å®š
         bool withinY = yDistance <= MaxYDistance;
         bool withinZ = zDistance <= MaxZDistance;
 
@@ -63,7 +64,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // ”­Ëˆ—‚ğBallshooter‚É”C‚¹‚é‚½‚ßAŒÄ‚Ño‚·‚¾‚¯
+            // ç™ºå°„å‡¦ç†ã‚’Ballshooterã«ä»»ã›ã‚‹ãŸã‚ã€å‘¼ã³å‡ºã™ã ã‘
             GetComponent<Ballshooter>().TryShoot();
         }
 
