@@ -5,21 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour
 {
-    public PlayerHitPoint Player_HitPoint;
+    //public PlayerHitPoint Player_HitPoint;
 
-    public EnemyCount Enemy_Count;
+    //public EnemyCount Enemy_Count;
     
     // Update is called once per frame
     void Update()
     {
-        if (Player_HitPosint.HitPoint<=0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
+        //if (Player_HitPosint.HitPoint<=0)
+        //{
+        //    SceneManager.LoadScene("GameOver");
+        //}
 
-        if(Enemy_Count.KillMaxEnemyCount()==Enemy_Count.KillNowEnemyCount())
-        {
-            SceneManager.LoadScene("Result");
-        }
+        //if(Enemy_Count.KillMaxEnemyCount()==Enemy_Count.KillNowEnemyCount())
+        //{
+        //    SceneManager.LoadScene("Result");
+        //}
     }
 }
