@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameStag.unity
     guid: a73f6c6caded5a5479b2f4b9a878396d
+  - enabled: 1
+    path: Assets/Scenes/GameTim.unity
+    guid: e644b6622495e1a458a0cd89defb4320
   m_configObjects: {}
