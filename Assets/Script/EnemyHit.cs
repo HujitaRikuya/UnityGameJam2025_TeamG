@@ -18,9 +18,9 @@ public class EnemyHit : MonoBehaviour
             }
 
             // プレイヤーに当たったら自分を消す
-            Destroy(gameObject);
+            //Destroy(gameObject);
 
-            Destroy(other.gameObject); // プレイヤーも消す
+            //Destroy(other.gameObject); // プレイヤーも消す
         }
     }
     // Start is called before the first frame update
