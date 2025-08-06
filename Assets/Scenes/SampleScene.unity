@@ -163,23 +163,13 @@ MonoBehaviour:
   ballPrefab: {fileID: 3438812766909429110, guid: 45ade00c9696f7b40a303b493bd0d508, type: 3}
   shootForce: 500
   shootPoint: {fileID: 1321920162}
+  killCount: 0
+  hitPoint: 3
 --- !u!4 &155368032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4882781291406988407, guid: 5d8b5114c5406ee428d1b3eef1ae765a, type: 3}
   m_PrefabInstance: {fileID: 831173816}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &155368034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155368028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f3a29daaf2a66c45b482428836629de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &155368035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -224,10 +214,24 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &155368038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155368028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3a29daaf2a66c45b482428836629de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerHitPoint: 3
+  invincibleTime: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +415,7 @@ PrefabInstance:
       addedObject: {fileID: 155368035}
     - targetCorrespondingSourceObject: {fileID: 5226655080229162701, guid: 5d8b5114c5406ee428d1b3eef1ae765a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 155368034}
+      addedObject: {fileID: 155368038}
   m_SourcePrefab: {fileID: 100100000, guid: 5d8b5114c5406ee428d1b3eef1ae765a, type: 3}
 --- !u!1 &963194225
 GameObject:
