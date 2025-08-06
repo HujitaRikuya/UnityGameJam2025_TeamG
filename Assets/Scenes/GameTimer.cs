@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameTimer : MonoBehaviour
 {
@@ -41,5 +42,10 @@ public class GameTimer : MonoBehaviour
 
         minutes = timeLimit / 60;
         seconds = timeLimit % 60;
+    }
+    public void OnLoadSceneAdditive()
+    {
+        //SceneBを加算ロード。現在のシーンは残ったままで、シーンBが追加される
+        SceneManager.LoadScene("SceneGameTim", LoadSceneMode.Additive);
     }
 }
