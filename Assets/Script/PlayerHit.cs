@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHit : MonoBehaviour
 {
-    public int hitPoint = 3; // プレイヤーのHP（初期値3）
+    public int PlayerHitPoint = 3; // プレイヤーのHP（初期値3）
     public float invincibleTime = 1.0f; // 無敵時間（秒）
 
     private bool isInvincible = false;
@@ -13,11 +13,11 @@ public class PlayerHit : MonoBehaviour
     {
         if (other.CompareTag("Enemy") && !isInvincible)
         {   
-            hitPoint--;
+            PlayerHitPoint--;
 
-            Debug.Log("Player hit! HP: " + hitPoint);
+            Debug.Log("Player hit! HP: " + PlayerHitPoint);
 
-            if (hitPoint <= 0)
+            if (PlayerHitPoint <= 0)
             {
                 Destroy(gameObject); // HPが0になったら消滅
             }

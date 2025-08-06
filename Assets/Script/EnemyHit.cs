@@ -13,14 +13,14 @@ public class EnemyHit : MonoBehaviour
             Player player = FindObjectOfType<Player>();
             if (player != null)
             {
-                player.killCount++;
-                Debug.Log("倒した数: " + player.killCount);
+                player.EnemyCount++;
+                Debug.Log("倒した数: " + player.EnemyCount);
             }
 
             // プレイヤーに当たったら自分を消す
-            //Destroy(gameObject);
+            Destroy(gameObject);
 
-            //Destroy(other.gameObject); // プレイヤーも消す
+            Destroy(other.gameObject); // プレイヤーも消す
         }
     }
     // Start is called before the first frame update
